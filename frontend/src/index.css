@@ -1,68 +1,43 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+body{
+    background-color: #121212;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
+@layer utilities {
+    .heading {
+      @apply uppercase bg-[#101010] px-6 py-3 font-extrabold text-white sm:text-[54px] sm:leading-[64px] text-[36px] leading-[46px] max-w-5xl text-center my-5;
+    }
+  
+    .hero-container {
+      @apply min-h-[530px] pattern flex justify-center items-center flex-col py-24 px-6 ;
+    }
+  
+    .sub-heading{
+      @apply font-medium text-[20px] text-white max-w-2xl text-center break-words;
+    }
+  
+    .pattern {
+      background-image: linear-gradient(
+        to right,
+        black 1%, /* White stripe is 2% wide */
+        #4c1d95 1%, /* Violet starts immediately after the white */
+        #4c1d95 99%, /* Violet continues until 98% */
+        black  99% /* White stripe resumes */
+      );
+      background-size: 5% 100%; /* Adjust the stripe spacing */
+      background-repeat: repeat; /* Repeat pattern horizontally */
+    }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
+    .section-container {
+      @apply px-6 py-10 max-w-7xl mx-auto;
+    }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
+    .card-grid{
+      @apply grid md:grid-cols-3 sm:grid-cols-2 gap-5;
+    }
+}  
