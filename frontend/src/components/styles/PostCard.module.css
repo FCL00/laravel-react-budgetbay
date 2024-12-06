@@ -1,0 +1,26 @@
+.card{
+   @apply max-w-sm rounded-md shadow-md p-4 bg-[#181818] text-white relative;
+}
+
+.card-header{
+    @apply mb-4;
+}
+
+.card-title{
+    @apply  font-bold text-violet-600 line-clamp-1 mb-2;
+}
+
+.card-author{
+    @apply italic text-gray-500;
+}
+
+.card-body{
+
+}
+.card-content{
+    @apply text-gray-500 line-clamp-2;
+}
+
+.card-icon{
+    @apply absolute top-3 right-3 flex text-white space-x-1;
+}
