@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -11,15 +12,27 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::with('user')->get();
+        return response()->json($posts);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $request->validate([
+            "title" => "required|string|max:255",
+            "content" => "required|string",
+        ]);
+
+        $post = Post::create([
+            "title" => $request->title,
+            "content" => $request->content,
+            "user_id" => rand(1, 60)
+        ]);
+
+        return response()->json($post, 201); // status 201 means created
     }
 
     /**
@@ -27,7 +40,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -35,7 +48,8 @@ class PostController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $post = Post::with('user')->findOrFail($id);
+        return response()->json($post);
     }
 
     /**
@@ -43,7 +57,7 @@ class PostController extends Controller
      */
     public function edit(string $id)
     {
-        //
+
     }
 
     /**
@@ -51,7 +65,19 @@ class PostController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $post = Post::findOrFail($id);
+
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'content' => 'required|string',
+        ]);
+
+        $post->update([
+            'title' => $request->title,
+            'content' => $request->content,
+        ]);
+
+        return response()->json($post);
     }
 
     /**
@@ -59,6 +85,9 @@ class PostController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $post->delete();
+
+        return response()->json(null, 204);
     }
 }
