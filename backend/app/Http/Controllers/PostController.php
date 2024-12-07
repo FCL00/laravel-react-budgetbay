@@ -21,6 +21,14 @@ class PostController extends Controller
      */
     public function create(Request $request)
     {
+
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
         $request->validate([
             "title" => "required|string|max:255",
             "content" => "required|string",
@@ -33,14 +41,6 @@ class PostController extends Controller
         ]);
 
         return response()->json($post, 201); // status 201 means created
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-
     }
 
     /**
