@@ -9,6 +9,7 @@ export function RootLayout({children} : RootLayoutProp){
     return(
         <>
             <Header />
+            <div className="py-16 flex justify-center items-center" id="portal-root"></div>
             <>{children}</>
             <Footer/>
         </>
