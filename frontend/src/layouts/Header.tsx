@@ -16,10 +16,10 @@ export default function Header() {
         <>
             <header className={style.header}>
                 <nav className={style.navbar}>
-                    <a className={style.navLogo}>
+                    <NavLink to="/" className={style.navLogo}>
                         <img src="" alt="" />
                         <span className="text-2xl font-bold">Budget Bay</span>
-                    </a>
+                    </NavLink>
                     <div className={style.navButton}>
                         <NavLink className={({ isActive }) => `hidden md:block ${isActive ? style.isActive : ''}`} to="/cart">Cart</NavLink>
                         <NavLink className={({ isActive }) => `hidden md:block ${isActive ? style.isActive : ''}`} to="/login">Login</NavLink>
