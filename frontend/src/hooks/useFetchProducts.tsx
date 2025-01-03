@@ -10,7 +10,7 @@ interface IProduct {
 }
 
 
-export default function useFetchProducts(){
+export function useFetchProducts(){
 
     const [products, setProducts] = useState<IProduct[] | null>();
     const [isLoading, setLoading] = useState<boolean>(true);
