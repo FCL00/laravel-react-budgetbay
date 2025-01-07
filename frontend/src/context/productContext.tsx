@@ -8,12 +8,12 @@ interface IProductContext{
 const ProductContext = createContext<IProductContext | undefined>(undefined);
 
 type Product = {
-    id: number;
+    id?: number;
     name: string;
     price: number;
     description: string;
-    stock: number;
-    image: string;
+    stock?: number;
+    image: File;
 };
 
 type ProductState = {
@@ -73,4 +73,6 @@ export function useProduct(){
     if(!context){
         throw new Error("useProduct must be used within a ProductProvider");
     }
+
+    return context;
 }
