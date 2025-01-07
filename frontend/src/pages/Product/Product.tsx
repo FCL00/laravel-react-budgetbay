@@ -1,7 +1,10 @@
-export function Product(){
+import { ProductProvider } from "@/context/productContext";
+import ProductForm from "./ProductForm";
+
+export default function Product(){
     return (
-        <div>
-            <h1>Product</h1>
-        </div>
+        <ProductProvider>
+           <ProductForm />
+        </ProductProvider>
     );
 }
