@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fetchProducts } from "./api/fetchProducts";
+import { fetchProducts } from "@/api/fetchProducts";
 
 interface IProduct {
     name: string;

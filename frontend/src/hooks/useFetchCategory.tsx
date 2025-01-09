@@ -1,5 +1,5 @@
 import {useEffect, useState } from "react";
-import { fetchCategory } from "./api/fetchCategory";
+import { fetchCategory } from "@/api/fetchCategory";
 
 interface ICategory {
     id: number;
