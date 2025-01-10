@@ -33,8 +33,14 @@ class ProductController extends Controller
     {
         $incomingData = $request->validated();
 
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            $path = $request->file('image')->store('uploads', 'public');
+            $incomingData['image'] = $path;
+        } else {
+            return response()->json(['message' => 'Invalid file upload'], 422);
+        }
+
         $data = Product::create($incomingData);
-        $data->save();
         return response()->json(['message' => 'Form submitted successfully!', "data" => $data], 201);
     }
 
